@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Lazy loading managed array</title>
+  <!-- <link rel='stylesheet' href='http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css'> -->
+  <link rel='stylesheet' href='https://unpkg.com/ng-table/bundles/ng-table.min.css'>
+
+  <link href="css/bootstrap.css" rel="stylesheet">
+  <link href="css/bootstrap-responsive.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+
+  <script src="http://code.jquery.com/jquery.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+</head>
+
+<body>
+
+  <div id="header-row">
+    <div class="container">
+      <div class="row">
+
+        <!--LOGO-->
+        <div class="span3">
+          <a class="brand" href="#"><img src="img/logo.png" /></a>
+        </div>
+        <!-- /LOGO -->
+
+        <!-- MAIN NAVIGATION -->
+        <div class="span9">
+          <div class="navbar  pull-right">
+            <div class="navbar-inner">
+              <a data-target=".navbar-responsive-collapse" data-toggle="collapse" class="btn btn-navbar"><span class="icon-bar"></span><span
+                  class="icon-bar"></span><span class="icon-bar"></span></a>
+              <div class="nav-collapse collapse navbar-responsive-collapse">
+                <ul class="nav">
+                  <li class="active"><a href="index.html">Home</a></li>
+                  <li class="dropdown">
+                    <a href="about.html" class="dropdown-toggle" data-toggle="dropdown">About <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                      <li><a href="about.html">Company</a></li>
+                      <li><a href="about.html">History</a></li>
+                      <li><a href="about.html">Team</a></li>
+                    </ul>
+                  </li>
+                  <li><a href="service.html">Services</a></li>
+                  <li><a href="blog.html">Blog</a></li>
+                  <li><a href="contact.html">Contact</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- MAIN NAVIGATION -->
+      </div>
+    </div>
+  </div>
+  <!-- /HEADER ROW -->
+
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <div ng-app="myApp">
+          <div ng-controller="demoController as demo">
+            <h2 class="page-header">Page stats</h2>
+
+            <div class="form-inline" style="margin-bottom: 20px">
+              <div class="form-group">
+                <label for="datasets">Select dataset</label>
+                <select id="datasets" class="form-control" ng-model="demo.dataset" ng-options="ds for ds in demo.datasets"
+                  ng-change="demo.changeDs()"></select>
+              </div>
+            </div>
+            <table ng-table="demo.tableParams" class="table table-condensed table-bordered table-striped">
+              <tr ng-repeat="row in $data">
+                <td data-title="'Page'" filter="{page: 'text'}" sortable="'page'">{{row.page}}</td>
+                <td data-title="'Last Day'" filter="{lastDay: 'number'}" sortable="'lastDay'">{{row.lastDay}}</td>
+                <td data-title="'Last Month'" filter="{lastMonth: 'number'}" sortable="'lastMonth'">{{row.lastMonth}}</td>
+                <td data-title="'Total'" filter="{total: 'number'}" sortable="'total'">{{row.total}}</td>
+              </tr>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src='http://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.2/angular.min.js'></script>
+  <script src='https://unpkg.com/ng-table/bundles/ng-table.min.js'></script>
+  <script src='js/ngTablesDemo.js'></script>
+  <script src="js/myApp.js"></script>
+
+  <!--Footer
+==========================-->
+
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div class="span6">Copyright &copy 2013 Shapebootstrap | All Rights Reserved <br>
+          <small>Aliquam tincidunt mauris eu risus.</small>
+        </div>
+        <div class="span6">
+          <div class="social pull-right">
+            <a href="#"><img src="img/social/googleplus.png" alt=""></a>
+            <a href="#"><img src="img/social/dribbble.png" alt=""></a>
+            <a href="#"><img src="img/social/twitter.png" alt=""></a>
+            <a href="#"><img src="img/social/dribbble.png" alt=""></a>
+            <a href="#"><img src="img/social/rss.png" alt=""></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!--/.Footer-->
+
+</body>
+
+</html>
